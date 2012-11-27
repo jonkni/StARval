@@ -1,0 +1,27 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<sr:StorageUsageRecords xmlns:sr='http://eu-emi.eu/namespaces/2011/02/storagerecord'>
+  <sr:StorageUsageRecord>
+    <sr:RecordIdentity sr:createTime='2012-11-20T16:00:05Z' sr:recordId='desycerttb_cms_disk_20121120T160005Z'/>
+    <sr:StorageSystem>discordia.desy.de</sr:StorageSystem>
+    <sr:Site>desycerttb</sr:Site>
+    <sr:StorageMedia>disk</sr:StorageMedia>
+    <sr:SubjectIdentity>
+      <sr:Group>cms</sr:Group>
+    </sr:SubjectIdentity>
+    <sr:StartTime>2012-11-20T15:50:05Z</sr:StartTime>
+    <sr:EndTime>2012-11-20T16:00:05Z</sr:EndTime>
+    <sr:ResourceCapacityUsed>693064064</sr:ResourceCapacityUsed>
+  </sr:StorageUsageRecord>
+  <sr:StorageUsageRecord>
+    <sr:RecordIdentity sr:createTime='2012-11-20T16:00:05Z' sr:recordId='desycerttb_atlas_disk_20121120T160005Z'/>
+    <sr:StorageSystem>discordia.desy.de</sr:StorageSystem>
+    <sr:Site>desycerttb</sr:Site>
+    <sr:StorageMedia>disk</sr:StorageMedia>
+    <sr:SubjectIdentity>
+      <sr:Group>atlas</sr:Group>
+    </sr:SubjectIdentity>
+    <sr:StartTime>2012-11-20T15:50:05Z</sr:StartTime>
+    <sr:EndTime>2012-11-20T16:00:05Z</sr:EndTime>
+    <sr:ResourceCapacityUsed>2843234682</sr:ResourceCapacityUsed>
+  </sr:StorageUsageRecord>
+</sr:StorageUsageRecords>

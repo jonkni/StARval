@@ -1,0 +1,17 @@
+This is the StarVal test suite.
+
+It contains:
+
+  o  brief description of the StAR format (StAR.txt)
+  o  a XSD for validating XML data (star.xsd)
+  o  a validation suite for validating XML data  (Makefile, which uses star.xsd and xmllint)
+  o  several example documents that illustrate the format (star-*.xml.gz)
+
+To use the validation suite, do
+
+  make test      --- check all .xml and .xml.gz files in current directory
+  make testegi   --- check all .xml and .xml.gz files in current directory against EGI profile
+  make testclean --- clean up after running the tests
+  make clean     --- more aggressive cleaning: removes backup files from editor
+
+Please email comments to Jon Kerr Nilsen <j.k.nilsen@fys.uio.no>

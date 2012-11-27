@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<xsd:schema attributeFormDefault="qualified"
+  elementFormDefault="qualified" targetNamespace="http://eu-emi.eu/namespaces/2011/02/storagerecord"
+  xmlns:sr="http://eu-emi.eu/namespaces/2011/02/storagerecord"
+  xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <xsd:annotation>
+    <xsd:documentation xml:lang="en">EGI profile for the EMI Storage Accounting
+      Record Working Group XML Schema definition V1.2
+    </xsd:documentation>
+  </xsd:annotation>
+  <xsd:complexType name="StorageUsageRecordType">
+    <xsd:sequence>
+      <xsd:element maxOccurs="1" minOccurs="1" ref="sr:RecordIdentity" />
+      <xsd:element maxOccurs="1" minOccurs="1" ref="sr:StorageSystem" />
+      <xsd:element maxOccurs="1" minOccurs="1" ref="sr:Site" />
+      <xsd:element maxOccurs="1" minOccurs="1" ref="sr:StorageShare" />
+      <xsd:element maxOccurs="1" minOccurs="0" ref="sr:StorageMedia" />
+      <xsd:element maxOccurs="1" minOccurs="0" ref="sr:StorageClass" />
+      <xsd:element maxOccurs="1" minOccurs="0" ref="sr:FileCount" />
+      <xsd:element maxOccurs="1" minOccurs="0" ref="sr:DirectoryPath" />
+      <xsd:element maxOccurs="1" minOccurs="1" ref="sr:SubjectIdentity" />
+      <xsd:element maxOccurs="1" minOccurs="1" ref="sr:StartTime" />
+      <xsd:element maxOccurs="1" minOccurs="1" ref="sr:EndTime" />
+      <xsd:element maxOccurs="1" minOccurs="1" ref="sr:ResourceCapacityUsed" />
+      <xsd:element maxOccurs="1" minOccurs="0" ref="sr:LogicalCapacityUsed" />
+      <xsd:element maxOccurs="1" minOccurs="1" ref="sr:ResourceCapacityAllocated" />
+    </xsd:sequence>
+  </xsd:complexType>
+
+  <xsd:element abstract="true" name="Usage" type="sr:StorageUsageRecordType" />
+  <xsd:element name="StorageUsageRecord" substitutionGroup="sr:Usage"
+    type="sr:StorageUsageRecordType" />
+  <xsd:element name="StorageUsageRecords">
+    <xsd:complexType>
+      <xsd:sequence>
+        <xsd:element maxOccurs="unbounded" minOccurs="0"
+          ref="sr:Usage" />
+      </xsd:sequence>
+    </xsd:complexType>
+  </xsd:element>
+  <!-- These common properties should appear at most once within a usage 
+    record, rather that at most once per metric per usage record -->
+
+  <xsd:element name="RecordIdentity" type="sr:RecordIdentityType" />
+
+  <xsd:element name="StorageSystem" type="xsd:string" />
+  <xsd:element name="Site" type="xsd:string" />
+  <xsd:element name="StorageShare" type="xsd:string" />
+  <xsd:element name="StorageMedia" type="xsd:string" />
+  <xsd:element name="StorageClass" type="xsd:string" />
+
+  <xsd:element name="FileCount" type="xsd:positiveInteger" />
+
+  <xsd:element name="DirectoryPath" type="xsd:string" />
+
+  <xsd:element name="SubjectIdentity" type="sr:SubjectIdentityType" />
+
+  <xsd:element name="StartTime" type="xsd:dateTime" />
+  <xsd:element name="EndTime" type="xsd:dateTime" />
+
+  <xsd:element name="ResourceCapacityUsed" type="xsd:nonNegativeInteger" />
+  <xsd:element name="LogicalCapacityUsed" type="xsd:nonNegativeInteger" />
+  <xsd:element name="ResourceCapacityAllocated" type="xsd:nonNegativeInteger" />
+
+  <!-- types -->
+  <xsd:complexType name="RecordIdentityType">
+    <xsd:simpleContent>
+      <xsd:extension base="xsd:string">
+	<xsd:attribute name="recordId" type="xsd:string" use="required" />
+	<xsd:attribute name="createTime" type="xsd:dateTime" use="required" />
+      </xsd:extension>
+    </xsd:simpleContent>
+  </xsd:complexType>
+
+  <xsd:complexType name="GroupAttributeType">
+    <xsd:simpleContent>
+      <xsd:extension base="xsd:string">
+        <xsd:attribute name="attributeType" type="xsd:string" use="required" />
+      </xsd:extension>
+    </xsd:simpleContent>
+  </xsd:complexType>
+
+  <xsd:complexType name="SubjectIdentityType">
+    <xsd:sequence>
+      <xsd:element name="LocalUser" type="xsd:string"
+		   maxOccurs="1" minOccurs="0" />
+      <xsd:element name="LocalGroup" type="xsd:string"
+		   maxOccurs="1" minOccurs="0" />
+      <xsd:element name="UserIdentity" type="xsd:string"
+		   maxOccurs="1" minOccurs="0" />
+      <xsd:element name="Group" type="xsd:string" 
+		   maxOccurs="1" minOccurs="1">
+	<xsd:annotation>
+	  <xsd:documentation xml:lang="en">MUST be the VO name.
+	  </xsd:documentation>
+	</xsd:annotation>
+      </xsd:element>
+      <xsd:sequence maxOccurs="unbounded" minOccurs="0">
+        <xsd:element maxOccurs="unbounded" minOccurs="0"
+		     name="GroupAttribute" type="sr:GroupAttributeType"/>
+      </xsd:sequence>
+    </xsd:sequence>
+  </xsd:complexType>
+  
+</xsd:schema>
