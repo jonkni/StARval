@@ -9,7 +9,7 @@
     </xsd:documentation>
   </xsd:annotation>
   <xsd:complexType name="StorageUsageRecordType">
-    <xsd:sequence>
+    <xsd:all>
       <xsd:element maxOccurs="1" minOccurs="1" ref="sr:RecordIdentity" />
       <xsd:element maxOccurs="1" minOccurs="1" ref="sr:StorageSystem" />
       <xsd:element maxOccurs="1" minOccurs="0" ref="sr:Site" />
@@ -24,7 +24,7 @@
       <xsd:element maxOccurs="1" minOccurs="1" ref="sr:ResourceCapacityUsed" />
       <xsd:element maxOccurs="1" minOccurs="0" ref="sr:LogicalCapacityUsed" />
       <xsd:element maxOccurs="1" minOccurs="0" ref="sr:ResourceCapacityAllocated" />
-    </xsd:sequence>
+    </xsd:all>
   </xsd:complexType>
 
   <xsd:element abstract="true" name="Usage" type="sr:StorageUsageRecordType" />
